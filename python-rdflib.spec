@@ -1,5 +1,4 @@
 
-%include	/usr/lib/rpm/macros.python
 %define	module	rdflib
 
 Summary:	Python library for working with RDF
