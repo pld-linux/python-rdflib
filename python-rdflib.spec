@@ -12,7 +12,7 @@ Group:		Development/Languages/Python
 Source0:	http://rdflib.net/2004/03/10/%{module}-%{version}.tgz
 # Source0-md5:	0118a5b5b56bc3662ae96240440aba83
 URL:		http://rdflib.net/
-BuildRequires:	python-devel >= 2.3
+BuildRequires:	python-devel >= 1:2.3
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
 BuildArch:	noarch
