@@ -4,13 +4,13 @@
 Summary:	Python library for working with RDF
 Summary(pl):	Biblioteka Pythona do pracy z RDF
 Name:		python-%{module}
-Version:	2.0.0
+Version:	2.0.4
 Release:	1
 License:	BSD
 Vendor:		Robin Dunn <robin@alldunn.com>
 Group:		Development/Languages/Python
-Source0:	http://rdflib.net/2004/03/10/%{module}-%{version}.tgz
-# Source0-md5:	0118a5b5b56bc3662ae96240440aba83
+Source0:	http://rdflib.net/2004/10/14/%{module}-%{version}.tgz
+# Source0-md5:	b7dfafb76e385b8b7169a02f0e5761f8
 URL:		http://rdflib.net/
 BuildRequires:	python-devel >= 1:2.3
 BuildRequires:	rpm-pythonprov
