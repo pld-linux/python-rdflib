@@ -1,6 +1,5 @@
 
-%include /usr/lib/rpm/macros.python
-
+%include	/usr/lib/rpm/macros.python
 %define	module	rdflib
 
 Summary:	Python library for working with RDF
@@ -8,7 +7,7 @@ Summary(pl):	Biblioteka Pythona do pracy z RDF
 Name:		python-%{module}
 Version:	2.0.0
 Release:	1
-License:	UNKNOWN
+License:	BSD
 Vendor:		Robin Dunn <robin@alldunn.com>
 Group:		Development/Languages/Python
 Source0:	http://rdflib.net/2004/03/10/%{module}-%{version}.tgz
@@ -27,6 +26,12 @@ parser/serializer, a TripleStore, an InformationStore and various
 store backends. It is being developed by Daniel Krech along with the
 help of a number of contributors.
 
+%description -l pl
+RDFLib to biblioteka Pythona do pracy z RDF - prostym, ale potê¿nym
+jêzykiem do reprezentowania informacji. Biblioteka zawiera
+parser/serializer RDF/XML, TripleStore, InformationStore oraz ró¿ne
+backendy do przechowywania informacji. Jest rozwijana przez Daniela
+Krecha z pomoc± wielu wspó³pracowników.
 
 %prep
 %setup -q -n %{module}-%{version}
@@ -36,7 +41,11 @@ env CFLAGS="%{rpmcflags}" python setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-python -- setup.py install --root=$RPM_BUILD_ROOT --optimize=2
+
+python -- setup.py install \
+	--root=$RPM_BUILD_ROOT \
+	--optimize=2
+
 find $RPM_BUILD_ROOT%{py_sitescriptdir} -name \*.py | xargs rm -f
 
 %clean
