@@ -11,7 +11,7 @@ Release:	1
 License:	UNKNOWN
 Vendor:		Robin Dunn <robin@alldunn.com>
 Group:		Development/Languages/Python
-Source0:	 http://rdflib.net/2004/03/10/%{module}-%{version}.tgz
+Source0:	http://rdflib.net/2004/03/10/%{module}-%{version}.tgz
 # Source0-md5:	0118a5b5b56bc3662ae96240440aba83
 URL:		http://rdflib.net/
 BuildRequires:	python-devel >= 2.3
@@ -23,9 +23,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 RDFLib is a Python library for working with RDF, a simple yet powerful
 language for representing information. The library contains an RDF/XML
-parser/serializer, a TripleStore, an InformationStore and various store
-backends. It is being developed by Daniel Krech along with the help of
-a number of contributors.
+parser/serializer, a TripleStore, an InformationStore and various
+store backends. It is being developed by Daniel Krech along with the
+help of a number of contributors.
 
 
 %prep
