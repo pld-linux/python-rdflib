@@ -1,27 +1,23 @@
 
-
 %include /usr/lib/rpm/macros.python
-%define	pname	rdflib
 
-%define py_ver         2.3
-%define py_prefix      %{_prefix}
-%define py_scriptdir   %{py_prefix}/share/python%{py_ver}
-%define py_sitescriptdir %{py_scriptdir}/site-packages
+%define	module	rdflib
 
 Summary:	Python library for working with RDF
 Summary(pl):	Biblioteka Pythona do pracy z RDF
-Name:		python-%{pname}
+Name:		python-%{module}
 Version:	2.0.0
 Release:	1
 License:	UNKNOWN
 Vendor:		Robin Dunn <robin@alldunn.com>
 Group:		Development/Languages/Python
-Source0:	 http://rdflib.net/2004/03/10/%{pname}-%{version}.tgz
+Source0:	 http://rdflib.net/2004/03/10/%{module}-%{version}.tgz
 # Source0-md5:	0118a5b5b56bc3662ae96240440aba83
 URL:		http://rdflib.net/
 BuildRequires:	python-devel >= 2.3
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -33,7 +29,7 @@ a number of contributors.
 
 
 %prep
-%setup -q -n %{pname}-%{version}
+%setup -q -n %{module}-%{version}
 
 %build
 env CFLAGS="%{rpmcflags}" python setup.py build
@@ -41,7 +37,7 @@ env CFLAGS="%{rpmcflags}" python setup.py build
 %install
 rm -rf $RPM_BUILD_ROOT
 python -- setup.py install --root=$RPM_BUILD_ROOT --optimize=2
-
+find $RPM_BUILD_ROOT%{py_sitescriptdir} -name \*.py | xargs rm -f
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -49,4 +45,4 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README TODO LICENSE doc example.py index.html
-%{py_sitescriptdir}/%{pname}
+%{py_sitescriptdir}/%{module}
