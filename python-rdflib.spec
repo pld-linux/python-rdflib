@@ -2,7 +2,7 @@
 %define	module	rdflib
 
 Summary:	Python library for working with RDF
-Summary(pl):	Biblioteka Pythona do pracy z RDF
+Summary(pl.UTF-8):   Biblioteka Pythona do pracy z RDF
 Name:		python-%{module}
 Version:	2.0.6
 Release:	1
@@ -24,12 +24,12 @@ parser/serializer, a TripleStore, an InformationStore and various
 store backends. It is being developed by Daniel Krech along with the
 help of a number of contributors.
 
-%description -l pl
-RDFLib to biblioteka Pythona do pracy z RDF - prostym, ale potê¿nym
-jêzykiem do reprezentowania informacji. Biblioteka zawiera
-parser/serializer RDF/XML, TripleStore, InformationStore oraz ró¿ne
+%description -l pl.UTF-8
+RDFLib to biblioteka Pythona do pracy z RDF - prostym, ale potÄ™Å¼nym
+jÄ™zykiem do reprezentowania informacji. Biblioteka zawiera
+parser/serializer RDF/XML, TripleStore, InformationStore oraz rÃ³Å¼ne
 backendy do przechowywania informacji. Jest rozwijana przez Daniela
-Krecha z pomoc± wielu wspó³pracowników.
+Krecha z pomocÄ… wielu wspÃ³Å‚pracownikÃ³w.
 
 %prep
 %setup -q -n %{module}-%{version}
