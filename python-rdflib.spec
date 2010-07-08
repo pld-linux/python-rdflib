@@ -5,7 +5,7 @@ Summary:	Python library for working with RDF
 Summary(pl.UTF-8):	Biblioteka Pythona do pracy z RDF
 Name:		python-%{module}
 Version:	2.0.6
-Release:	2
+Release:	3
 License:	BSD
 Vendor:		Robin Dunn <robin@alldunn.com>
 Group:		Development/Languages/Python
