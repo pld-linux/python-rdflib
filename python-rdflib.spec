@@ -13,6 +13,8 @@ Source0:	http://rdflib.net/2005/03/19/%{module}-%{version}.tgz
 # Source0-md5:	da3d3ae7627a3cc4188cf139f96b4e32
 URL:		http://rdflib.net/
 BuildRequires:	python-devel >= 1:2.3
+BuildRequires:	python-modules
+BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
