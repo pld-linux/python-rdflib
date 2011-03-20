@@ -4,15 +4,14 @@
 Summary:	Python library for working with RDF
 Summary(pl.UTF-8):	Biblioteka Pythona do pracy z RDF
 Name:		python-%{module}
-Version:	2.0.6
-Release:	3
+Version:	3.0.0
+Release:	1
 License:	BSD
-Vendor:		Robin Dunn <robin@alldunn.com>
 Group:		Development/Languages/Python
-Source0:	http://rdflib.net/2005/03/19/%{module}-%{version}.tgz
-# Source0-md5:	da3d3ae7627a3cc4188cf139f96b4e32
-URL:		http://rdflib.net/
-BuildRequires:	python-devel >= 1:2.3
+Source0:	http://www.rdflib.net/%{module}-%{version}.tar.gz
+# Source0-md5:	226e615a5d82f12ebbc36e6af562384c
+URL:		http://www.rdflib.net/
+BuildRequires:	python-devel >= 1:2.4
 BuildRequires:	python-modules
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python-modules
@@ -37,21 +36,22 @@ Krecha z pomocą wielu współpracowników.
 %setup -q -n %{module}-%{version}
 
 %build
-env CFLAGS="%{rpmcflags}" python setup.py build
+%{__python} setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-python -- setup.py install \
+%{__python} setup.py install \
 	--root=$RPM_BUILD_ROOT \
 	--optimize=2
 
-find $RPM_BUILD_ROOT%{py_sitescriptdir} -name \*.py | xargs rm -f
+%py_postclean
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README TODO LICENSE doc example.py index.html
-%{py_sitescriptdir}/%{module}
+%doc CHANGELOG README examples/*.py
+%{py_sitescriptdir}/rdflib
+%{py_sitescriptdir}/rdflib-*.egg-info
