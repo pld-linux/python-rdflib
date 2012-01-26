@@ -5,7 +5,7 @@ Summary:	Python library for working with RDF
 Summary(pl.UTF-8):	Biblioteka Pythona do pracy z RDF
 Name:		python-%{module}
 Version:	3.2.0
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	http://www.rdflib.net/%{module}-%{version}.tar.gz
@@ -14,6 +14,7 @@ URL:		http://www.rdflib.net/
 BuildRequires:	python-devel >= 1:2.4
 BuildRequires:	python-modules
 BuildRequires:	rpm-pythonprov
+Requires:	python-isodate
 %pyrequires_eq	python-modules
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
