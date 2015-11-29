@@ -11,6 +11,7 @@ Group:		Development/Languages/Python
 Source0:	http://www.rdflib.net/%{module}-%{version}.tar.gz
 # Source0-md5:	ab3d3a5f71ebb6fe4fd33539f5d5768e
 URL:		http://www.rdflib.net/
+BuildRequires:	rpmbuild(macros) >= 1.710
 BuildRequires:	python-devel >= 1:2.4
 BuildRequires:	python-modules
 BuildRequires:	rpm-pythonprov
