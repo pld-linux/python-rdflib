@@ -1,12 +1,12 @@
-
+#
 # Conditional build:
 %bcond_without	python2 # CPython 2.x module
 %bcond_without	python3 # CPython 3.x module
 
 %define	module	rdflib
 
-Summary:	Python library for working with RDF
-Summary(pl.UTF-8):	Biblioteka Pythona do pracy z RDF
+Summary:	Python 2 library for working with RDF
+Summary(pl.UTF-8):	Biblioteka Pythona 2 do pracy z RDF
 Name:		python-%{module}
 Version:	4.2.1
 Release:	1
@@ -18,14 +18,14 @@ URL:		https://github.com/RDFLib/rdflib
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with python2}
-BuildRequires:	python-modules
+BuildRequires:	python-modules >= 1:2.6
 BuildRequires:	python-setuptools
 %endif
 %if %{with python3}
-BuildRequires:	python3-modules
+BuildRequires:	python3-modules >= 1:3.3
 BuildRequires:	python3-setuptools
 %endif
-Requires:	python-modules
+Requires:	python-modules >= 1:2.6
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -44,10 +44,10 @@ backendy do przechowywania informacji. Jest rozwijana przez Daniela
 Krecha z pomocą wielu współpracowników.
 
 %package -n python3-%{module}
-Summary:	Python library for working with RDF
-Summary(pl.UTF-8):	Biblioteka Pythona do pracy z RDF
+Summary:	Python 3 library for working with RDF
+Summary(pl.UTF-8):	Biblioteka Pythona 3 do pracy z RDF
 Group:		Libraries/Python
-Requires:	python3-modules
+Requires:	python3-modules >= 1:3.3
 
 %description -n python3-%{module}
 RDFLib is a Python library for working with RDF, a simple yet powerful
@@ -65,15 +65,19 @@ Krecha z pomocą wielu współpracowników.
 
 %package -n rdflib-tools
 Summary:	Utilities from python-rdflib
-Group:		Applications
+Summary(pl.UTF-8):	Narzędzia z pakietu python-rdflib
+Group:		Applications/File
 %if %{with python3}
-Requires:	python3-%{module}
+Requires:	python3-%{module} = %{version}-%{release}
 %else
-Requires:	%{name}
+Requires:	%{name} = %{version}-%{release}
 %endif
 
 %description -n rdflib-tools
 Utilities from python-rdflib.
+
+%description -n rdflib-tools -l pl.UTF-8
+Narzędzia z pakietu python-rdflib.
 
 %prep
 %setup -q -n %{module}-%{version}
@@ -94,10 +98,16 @@ rm -rf $RPM_BUILD_ROOT
 %py_install
 
 %py_postclean
+
+install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+cp -p examples/*.py $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 %endif
 
 %if %{with python3}
 %py3_install
+
+install -d $RPM_BUILD_ROOT%{_examplesdir}/python3-%{module}-%{version}
+cp -p examples/*.py $RPM_BUILD_ROOT%{_examplesdir}/python3-%{module}-%{version}
 %endif
 
 %clean
@@ -105,16 +115,22 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGELOG.md README.md CONTRIBUTORS examples/*.py
+%doc CHANGELOG.md CONTRIBUTORS LICENSE README.md
 %{py_sitescriptdir}/rdflib
-%{py_sitescriptdir}/rdflib-*.egg-info
+%{py_sitescriptdir}/rdflib-%{version}-py*.egg-info
+%{_examplesdir}/%{name}-%{version}
 
 %files -n python3-%{module}
 %defattr(644,root,root,755)
-%doc CHANGELOG.md README.md CONTRIBUTORS examples/*.py
+%doc CHANGELOG.md CONTRIBUTORS LICENSE README.md
 %{py3_sitescriptdir}/rdflib
-%{py3_sitescriptdir}/rdflib-*.egg-info
+%{py3_sitescriptdir}/rdflib-%{version}-py*.egg-info
+%{_examplesdir}/python3-%{module}-%{version}
 
 %files -n rdflib-tools
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/csv2rdf
+%attr(755,root,root) %{_bindir}/rdf2dot
+%attr(755,root,root) %{_bindir}/rdfgraphisomorphism
+%attr(755,root,root) %{_bindir}/rdfpipe
+%attr(755,root,root) %{_bindir}/rdfs2dot
