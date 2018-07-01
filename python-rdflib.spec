@@ -8,12 +8,12 @@
 Summary:	Python 2 library for working with RDF
 Summary(pl.UTF-8):	Biblioteka Pythona 2 do pracy z RDF
 Name:		python-%{module}
-Version:	4.2.1
-Release:	3
+Version:	4.2.2
+Release:	1
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	https://github.com/RDFLib/rdflib/archive/%{version}/%{module}-%{version}.tar.gz
-# Source0-md5:	ce76cb39a5737aeb99f557cff3826a5f
+# Source0-md5:	1dd95c6443302d6a44a908e4af8fdc5d
 URL:		https://github.com/RDFLib/rdflib
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
