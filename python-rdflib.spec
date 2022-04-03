@@ -3,8 +3,8 @@
 %bcond_without	doc	# Sphinx documentation
 %bcond_with	tests	# unit tests (few failures as of 5.0.0)
 %bcond_without	python2 # CPython 2.x module
-%bcond_without	python3 # CPython 3.x module
-%bcond_without	tools	# package tools
+%bcond_with	python3 # CPython 3.x module (built from python3-rdflib.spec)
+%bcond_with	tools	# package tools (built from python3-rdflib.spec)
 
 %define	module	rdflib
 
@@ -21,7 +21,7 @@ Source0:	https://github.com/RDFLib/rdflib/archive/%{version}/%{module}-%{version
 # Source0-md5:	aaca854daef803da19010181eb99e3e1
 URL:		https://rdflib.dev/
 %if %{with python2}
-BuildRequires:	python-modules >= 1:2.6
+BuildRequires:	python-modules >= 1:2.7
 BuildRequires:	python-setuptools
 %if %{with tests}
 BuildRequires:	python-doctest-ignore-unicode
@@ -34,7 +34,7 @@ BuildRequires:	python-six
 %endif
 %endif
 %if %{with python3}
-BuildRequires:	python3-modules >= 1:3.3
+BuildRequires:	python3-modules >= 1:3.4
 BuildRequires:	python3-setuptools
 %if %{with tests}
 BuildRequires:	python3-doctest-ignore-unicode
@@ -52,7 +52,7 @@ BuildRequires:	rpmbuild(macros) >= 1.714
 BuildRequires:	python3-sphinxcontrib-apidoc
 BuildRequires:	sphinx-pdg >= 2.4
 %endif
-Requires:	python-modules >= 1:2.6
+Requires:	python-modules >= 1:2.7
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -74,7 +74,7 @@ Krecha z pomocą wielu współpracowników.
 Summary:	Python 3 library for working with RDF
 Summary(pl.UTF-8):	Biblioteka Pythona 3 do pracy z RDF
 Group:		Libraries/Python
-Requires:	python3-modules >= 1:3.3
+Requires:	python3-modules >= 1:3.4
 
 %description -n python3-%{module}
 RDFLib is a Python library for working with RDF, a simple yet powerful
